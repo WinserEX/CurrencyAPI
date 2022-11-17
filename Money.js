@@ -8,3 +8,14 @@ request.onload = function() {
   var response = request.response;
   console.log(response);
 }
+
+
+
+const p = document.createElement('P');
+
+const container = document.body.querySelector("#target");
+
+container.append(p);
+
+p.innerHTML = "hello";
+
