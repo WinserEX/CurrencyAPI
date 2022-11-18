@@ -30,7 +30,7 @@ p.innerHTML = "hello"; */
 
 //Fetch
 
-fetch("https://api.exchangerate.host/2020-04-04")
+/* fetch("https://api.exchangerate.host/2020-04-04")
 .then((res) => {
     console.log("RESOLVED!", res);
     return res.json();
@@ -50,5 +50,42 @@ fetch("https://api.exchangerate.host/2020-04-04")
 })
 .catch((e) => {
     console.log("ERROR!", e); 
-})
+}) */
 
+//Async
+// const exchangeRate = async () => {
+//   try {
+//   const res = await fetch("https://api.exchangerate.host/convert?from=USD&to=EUR&amount=1000&places=2");
+//   const data = await res.json();
+//   console.log(`If we convert ${data.query.amount} ${data.query.from} to ${data.query.to}, the result is ${data.result} ${data.query.to}`);
+//   const res2 = await fetch("https://api.exchangerate.host/convert?from=USD&to=EUR&amount=2000&places=2");
+//   const data2 = await res2.json();
+//   console.log(`If we convert ${data2.query.amount} ${data2.query.from} to ${data2.query.to}, the result is ${data2.result} ${data2.query.to}`);
+//   }
+//   catch (e) {
+//     console.log("error!", e)
+//   }
+// };
+
+// exchangeRate();
+
+//Axios
+
+// axios.get("https://api.exchangerate.host/convert?from=USD&to=EUR&amount=1000&places=2").then((res) => {
+//     console.log("RESPONSE: ", res);
+// })
+// .catch((e) => {
+//     console.log("ERROR ", e);
+// })
+
+const getExchangeRate = async (amt) => {
+  try {
+    const res = await axios.get(`https://api.exchangerate.host/convert?from=USD&to=EUR&amount=${amt}&places=2`);
+    console.log(`If we convert ${res.data.query.amount} ${res.data.query.from} to ${res.data.query.to}, the result is ${res.data.result} ${res.data.query.to}`);
+  }
+  catch (e) {
+    console.log("Error", e);
+  }
+};
+
+getExchangeRate(5050);
